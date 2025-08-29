@@ -211,7 +211,7 @@ const RegistrationForm = ({ onSuccess }) => {
 
         <div className="file-input">
           <div className="file-input__left">
-            <input type="file" name="photo" onChange={handleChange} />
+            <input type="file" name="photo" onChange={handleChange} aria-label="Upload photo" />
             <span>Upload</span>
           </div>
           <div className="file-input__right">Upload your photo</div>
