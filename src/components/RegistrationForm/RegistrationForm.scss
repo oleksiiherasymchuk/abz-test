@@ -1,0 +1,237 @@
+@use "../../styles/variables.scss" as *;
+
+.registration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 60px auto;
+  width: 1170px;
+  padding-top: 80px;
+  text-align: center;
+
+  h1 {
+    margin-bottom: 50px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 380px;
+    height: 662px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="file"] {
+    padding: 16px 14px;
+    border: 1px solid #d0cfcf;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"] {
+    &.error-input {
+      border: 2px solid #cb3d40;
+    }
+  }
+
+  input[type="email"],
+  input[type="text"] {
+    margin-bottom: 40px;
+  }
+
+  .file-input {
+    display: flex;
+    margin-top: 27px;
+    width: 100%;
+    height: 54px;
+    font-family: $font-primary;
+
+    &__left {
+      width: 22%;
+      position: relative;
+      border: 1px solid black;
+      border-right: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      input[type="file"] {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      span {
+        z-index: 1;
+        font-weight: bold;
+      }
+    }
+
+    &__right {
+      width: 78%;
+      display: flex;
+      align-items: center;
+      padding-left: 10px;
+      border-top: 1px solid #b4b4b4;
+      border-bottom: 1px solid #b4b4b4;
+      border-right: 1px solid #b4b4b4;
+      border-left: 1px solid black;
+      color: #333;
+    }
+  }
+
+  .phone {
+    font-family: $font-primary;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    position: relative;
+    top: -5px;
+    right: 90px;
+    color: #7e7e7e;
+  }
+
+  .positions {
+    text-align: left;
+
+    p {
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 12px;
+      cursor: pointer;
+
+      input[type="radio"] {
+        display: none;
+      }
+
+      .radio-label {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+        padding-left: 30px;
+
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          border: 2px solid #d0cfcf;
+          background: #fff;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          left: 7px;
+          top: 6px;
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: $color-secondary;
+          opacity: 0;
+          transition: opacity 0.2s ease;
+        }
+      }
+
+      input[type="radio"]:checked + .radio-label::before {
+        border-color: $color-secondary;
+      }
+
+      input[type="radio"]:checked + .radio-label::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  .error {
+    color: #cb3d40;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: left;
+    margin-top: -40px;
+    margin-bottom: 40px;
+    display: block;
+  }
+
+  button {
+    margin-top: 35px;
+    align-self: center;
+    transition: 0.3s;
+  }
+
+  button:hover {
+    background: #ffe302;
+  }
+
+  button:disabled {
+    background: #b4b4b4;
+    color: #ffffffde;
+    cursor: not-allowed;
+  }
+}
+
+@media (max-width: 1024px) {
+  .registration {
+    width: 904px;
+    padding-top: 80px;
+
+    h1 {
+      margin-bottom: 50px;
+    }
+
+    form {
+      button {
+        margin-top: 42px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .registration {
+    margin: 60px auto;
+    width: 704px;
+    padding-top: 80px;
+
+    h1 {
+      margin-top: 80px;
+    }
+
+    form {
+      button {
+        margin-top: 43px;
+      }
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .registration {
+    width: 328px;
+    height: auto;
+
+    h1 {
+      margin-top: 0px;
+    }
+
+    form {
+      width: 328px;
+    }
+  }
+}
