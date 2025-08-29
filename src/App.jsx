@@ -1,8 +1,10 @@
-import { useState } from "react";
-import AssignmentSection from "./components/AssignmentSection/AssignmentSection";
-import RegistrationForm from "./components/RegistrationForm/RegistrationForm";
-import UserList from "./components/UserList/UserList";
+import { useState, Suspense, lazy } from "react";
 import Header from "./pages/Header/Header";
+import Preloader from "./components/Preloader/Preloader";
+
+const AssignmentSection = lazy(() => import("./components/AssignmentSection/AssignmentSection"));
+const UserList = lazy(() => import("./components/UserList/UserList"));
+const RegistrationForm = lazy(() => import("./components/RegistrationForm/RegistrationForm"));
 
 const App = () => {
   const [refreshFlag, setRefreshFlag] = useState(false);
@@ -14,9 +16,18 @@ const App = () => {
   return (
     <div>
       <Header />
-      <AssignmentSection />
-      <UserList refresh={refreshFlag} />
-      <RegistrationForm onSuccess={handleRegistrationSuccess} />
+
+      <Suspense fallback={<Preloader />}>
+        <AssignmentSection />
+      </Suspense>
+
+      <Suspense fallback={<Preloader />}>
+        <UserList refresh={refreshFlag} />
+      </Suspense>
+
+      <Suspense fallback={<Preloader />}>
+        <RegistrationForm onSuccess={handleRegistrationSuccess} />
+      </Suspense>
     </div>
   );
 };

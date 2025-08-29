@@ -13,6 +13,7 @@ const UserCard = ({ user }) => {
       <img
         src={user.photo || Vector}
         alt={user.name || Vector}
+        loading="lazy"
         className="user-photo"
       />
       <h3 title={user.name}>{truncateText(user.name, 25)}</h3>
